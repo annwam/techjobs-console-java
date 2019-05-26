@@ -2,6 +2,7 @@ package org.launchcode.techjobs.console;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -11,7 +12,10 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
+
+        //String something="NAME";
+
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -25,6 +29,7 @@ public class TechJobs {
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("search", "Search");
         actionChoices.put("list", "List");
+        //actionChoices.get("list");
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
@@ -61,6 +66,7 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+                    printJobs(JobData.findByValue(searchTerm));
                     System.out.println("Search all fields not yet implemented.");
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
@@ -103,14 +109,31 @@ public class TechJobs {
                 validChoice = true;
             }
 
-        } while(!validChoice);
+        } while (!validChoice);
 
         return choiceKeys[choiceIdx];
     }
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.size() == 0) {
+            System.out.println("No matching data");
+        }
 
-        System.out.println("printJobs is not implemented yet");
+        for (int i = 0; i < someJobs.size(); i++) {
+            HashMap<String, String> job = someJobs.get(i);
+
+            for (Map.Entry<String, String> entry : job.entrySet())
+                System.out.println(entry.getKey() +
+                        ": " + entry.getValue());
+            System.out.println("******");
+
+            }
+            //System.out.println("printJobs is not implemented yet");
+            //String aValue = someJobs.entry.getValue;
+
+
     }
+
+
 }

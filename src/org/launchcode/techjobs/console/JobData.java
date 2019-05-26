@@ -54,6 +54,15 @@ public class JobData {
         return allJobs;
     }
 
+    public static void findByValue(String value){
+        
+
+
+
+
+    }
+
+
     /**
      * Returns results of search the jobs data by key/value, using
      * inclusion of the search term.
@@ -124,5 +133,4 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
 }
