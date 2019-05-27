@@ -54,8 +54,20 @@ public class JobData {
         return allJobs;
     }
 
-    public static void findByValue(String value){
-        
+    public static ArrayList<HashMap<String, String>>findByValue(String value){
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        loadData();
+        for (HashMap<String,String> row: allJobs) {
+            List<String>values = new ArrayList<>(row.values());
+            for (String rowValue : values){
+                if (rowValue.contains(value)) {
+                    jobs.add(row);
+                break;
+                }
+            }
+
+        }
+
 
 
 
